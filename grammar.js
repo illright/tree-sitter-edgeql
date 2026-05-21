@@ -82,7 +82,7 @@ export default grammar({
     ),
 
     with_statement: $ => seq(
-      kw("with"),
+      $.keyword_with,
       commaSep1($.with_binding),
       $.statement
     ),
@@ -94,8 +94,8 @@ export default grammar({
     ),
 
     select_statement: $ => seq(
-      kw("select"),
-      optional(kw("detached")),
+      $.keyword_select,
+      optional($.keyword_detached),
       commaSep1($.expression),
       repeat(choice(
         $.filter_clause,
@@ -107,38 +107,38 @@ export default grammar({
     ),
 
     insert_statement: $ => seq(
-      kw("insert"),
+      $.keyword_insert,
       $.type_name,
       optional($.shape_literal)
     ),
 
     update_statement: $ => seq(
-      kw("update"),
+      $.keyword_update,
       $.expression,
       optional($.filter_clause),
       optional($.shape_literal)
     ),
 
     delete_statement: $ => seq(
-      kw("delete"),
+      $.keyword_delete,
       $.expression,
       optional($.filter_clause)
     ),
 
     for_statement: $ => seq(
-      kw("for"),
+      $.keyword_for,
       field("name", $.name),
-      kw("in"),
+      $.keyword_in,
       field("iterable", $.expression),
-      kw("union"),
+      $.keyword_union,
       field("result", $.expression)
     ),
 
     function_statement: $ => seq(
       choice(
-        kw("function"),
-        seq(kw("abstract"), kw("constraint")),
-        kw("aggregate")
+        $.keyword_function,
+        seq($.keyword_abstract, $.keyword_constraint),
+        $.keyword_aggregate
       ),
       $.name,
       $.parameters,
@@ -156,37 +156,37 @@ export default grammar({
     ),
 
     command_keyword: $ => choice(
-      kw("create"),
-      kw("alter"),
-      kw("drop"),
-      kw("rename"),
-      kw("set"),
-      kw("from"),
-      kw("configure"),
-      kw("start"),
-      kw("commit"),
-      kw("rollback"),
-      kw("grant"),
-      kw("revoke")
+      $.keyword_create,
+      $.keyword_alter,
+      $.keyword_drop,
+      $.keyword_rename,
+      $.keyword_set,
+      $.keyword_from,
+      $.keyword_configure,
+      $.keyword_start,
+      $.keyword_commit,
+      $.keyword_rollback,
+      $.keyword_grant,
+      $.keyword_revoke
     ),
 
-    filter_clause: $ => seq(kw("filter"), $.expression),
+    filter_clause: $ => seq($.keyword_filter, $.expression),
 
     order_clause: $ => seq(
-      kw("order"),
-      optional(kw("by")),
+      $.keyword_order,
+      optional($.keyword_by),
       commaSep1($.expression)
     ),
 
     group_clause: $ => seq(
-      kw("group"),
-      optional(kw("by")),
+      $.keyword_group,
+      optional($.keyword_by),
       commaSep1($.expression)
     ),
 
-    offset_clause: $ => seq(kw("offset"), $.expression),
+    offset_clause: $ => seq($.keyword_offset, $.expression),
 
-    limit_clause: $ => seq(kw("limit"), $.expression),
+    limit_clause: $ => seq($.keyword_limit, $.expression),
 
     expression: $ => choice(
       $.conditional_expression,
@@ -212,17 +212,17 @@ export default grammar({
 
     conditional_expression: $ => prec.right(PREC.CONDITIONAL, seq(
       field("then", $.expression),
-      kw("if"),
+      $.keyword_if,
       field("condition", $.expression),
-      kw("else"),
+      $.keyword_else,
       field("else", $.expression)
     )),
 
     binary_expression: $ => choice(
-      prec.left(PREC.OR, seq($.expression, kw("or"), $.expression)),
-      prec.left(PREC.AND, seq($.expression, kw("and"), $.expression)),
+      prec.left(PREC.OR, seq($.expression, $.keyword_or, $.expression)),
+      prec.left(PREC.AND, seq($.expression, $.keyword_and, $.expression)),
       prec.left(PREC.COMPARE, seq($.expression, choice("=", "!=", "<", "<=", ">", ">="), $.expression)),
-      prec.left(PREC.COMPARE, seq($.expression, choice(kw("is"), kw("in"), kw("like"), kw("ilike")), $.expression)),
+      prec.left(PREC.COMPARE, seq($.expression, choice($.keyword_is, $.keyword_in, $.keyword_like, $.keyword_ilike), $.expression)),
       prec.left(PREC.CONCAT, seq($.expression, choice("++", "//"), $.expression)),
       prec.left(PREC.ADD, seq($.expression, choice("+", "-"), $.expression)),
       prec.left(PREC.MUL, seq($.expression, choice("*", "/", "%"), $.expression)),
@@ -231,7 +231,7 @@ export default grammar({
     ),
 
     unary_expression: $ => prec.right(PREC.UNARY, seq(
-      choice("+", "-", "~", kw("not")),
+      choice("+", "-", "~", $.keyword_not),
       $.expression
     )),
 
@@ -277,7 +277,7 @@ export default grammar({
     ),
 
     parameter: $ => seq(
-      optional(choice(kw("named"), kw("variadic"), kw("optional"), kw("required"))),
+      optional(choice($.keyword_named, $.keyword_variadic, $.keyword_optional, $.keyword_required)),
       field("name", $.name),
       ":",
       field("type", $.type_expression),
@@ -291,14 +291,14 @@ export default grammar({
     ),
 
     array_type: $ => seq(
-      kw("array"),
+      $.keyword_array,
       "<",
       $.type_expression,
       ">"
     ),
 
     tuple_type: $ => seq(
-      kw("tuple"),
+      $.keyword_tuple,
       "<",
       commaSep1(choice(
         $.type_expression,
@@ -327,9 +327,9 @@ export default grammar({
     block: $ => seq("{", optional($._statement_list), "}"),
 
     constant: $ => choice(
-      kw("true"),
-      kw("false"),
-      kw("empty")
+      $.keyword_true,
+      $.keyword_false,
+      $.keyword_empty
     ),
 
     literal: $ => choice(
@@ -375,6 +375,55 @@ export default grammar({
 
     quoted_name: _ => token(/`[^`\n]+`/),
 
-    comment: _ => token(/#[^\n]*/)
+    comment: _ => token(/#[^\n]*/),
+
+    keyword_with: _ => kw("with"),
+    keyword_select: _ => kw("select"),
+    keyword_detached: _ => kw("detached"),
+    keyword_insert: _ => kw("insert"),
+    keyword_update: _ => kw("update"),
+    keyword_delete: _ => kw("delete"),
+    keyword_for: _ => kw("for"),
+    keyword_in: _ => kw("in"),
+    keyword_union: _ => kw("union"),
+    keyword_function: _ => kw("function"),
+    keyword_abstract: _ => kw("abstract"),
+    keyword_constraint: _ => kw("constraint"),
+    keyword_aggregate: _ => kw("aggregate"),
+    keyword_create: _ => kw("create"),
+    keyword_alter: _ => kw("alter"),
+    keyword_drop: _ => kw("drop"),
+    keyword_rename: _ => kw("rename"),
+    keyword_set: _ => kw("set"),
+    keyword_from: _ => kw("from"),
+    keyword_configure: _ => kw("configure"),
+    keyword_start: _ => kw("start"),
+    keyword_commit: _ => kw("commit"),
+    keyword_rollback: _ => kw("rollback"),
+    keyword_grant: _ => kw("grant"),
+    keyword_revoke: _ => kw("revoke"),
+    keyword_filter: _ => kw("filter"),
+    keyword_order: _ => kw("order"),
+    keyword_by: _ => kw("by"),
+    keyword_group: _ => kw("group"),
+    keyword_offset: _ => kw("offset"),
+    keyword_limit: _ => kw("limit"),
+    keyword_if: _ => kw("if"),
+    keyword_else: _ => kw("else"),
+    keyword_or: _ => kw("or"),
+    keyword_and: _ => kw("and"),
+    keyword_is: _ => kw("is"),
+    keyword_like: _ => kw("like"),
+    keyword_ilike: _ => kw("ilike"),
+    keyword_not: _ => kw("not"),
+    keyword_named: _ => kw("named"),
+    keyword_variadic: _ => kw("variadic"),
+    keyword_optional: _ => kw("optional"),
+    keyword_required: _ => kw("required"),
+    keyword_array: _ => kw("array"),
+    keyword_tuple: _ => kw("tuple"),
+    keyword_true: _ => kw("true"),
+    keyword_false: _ => kw("false"),
+    keyword_empty: _ => kw("empty"),
   }
 });
