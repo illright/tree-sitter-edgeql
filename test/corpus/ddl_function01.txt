@@ -1,0 +1,61 @@
+==================
+ddl_function01
+==================
+
+CREATE FUNCTION test::call1(
+    s: str,
+    VARIADIC a: int64,
+    NAMED ONLY suffix: str = '-suf',
+) -> std::str
+    FROM EdgeQL $$
+        SELECT 'foo';
+    $$;
+
+---
+
+(source_file
+  (statement
+    (create_statement
+      (keyword_create)
+      (create_function_statement
+        (keyword_function)
+        (module_qualified_name
+          (name
+            (identifier))
+          (name
+            (identifier)))
+        (parameters
+          (parameter
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type))))
+          (parameter
+            (keyword_variadic)
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type))))
+          (parameter
+            (keyword_named)
+            (keyword_only)
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type)))
+            (expression
+              (literal
+                (string)))))
+        (type_expression
+          (type_name
+            (module_qualified_name
+              (builtin_module)
+              (builtin_type))))
+        (create_from_clause
+          (keyword_from)
+          (name
+            (identifier))
+          (dollar_string))))))

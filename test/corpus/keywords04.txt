@@ -1,0 +1,28 @@
+==================
+keywords04
+==================
+
+__source__;
+__subject__;
+__type__;
+__default__;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (name
+        (identifier))))
+  (statement
+    (expression
+      (name
+        (identifier))))
+  (statement
+    (expression
+      (name
+        (identifier))))
+  (statement
+    (expression
+      (name
+        (identifier)))))

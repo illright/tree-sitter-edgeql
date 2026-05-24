@@ -1,0 +1,44 @@
+==================
+function02
+==================
+
+function some_func($foo: std::int64 = 42) -> std::str {
+    from sql "SELECT 'life';";
+}
+
+---
+
+(source_file
+  (statement
+    (function_statement
+      (keyword_function)
+      (name
+        (identifier))
+      (parameters
+        (parameter
+          (variable
+            (identifier))
+          (type_expression
+            (type_name
+              (module_qualified_name
+                (builtin_module)
+                (builtin_type))))
+          (expression
+            (literal
+              (integer)))))
+      (type_expression
+        (type_name
+          (module_qualified_name
+            (builtin_module)
+            (builtin_type))))
+      (block
+        (statement
+          (command_statement
+            (command_keyword
+              (keyword_from))
+            (expression
+              (name
+                (identifier)))
+            (expression
+              (literal
+                (string)))))))))

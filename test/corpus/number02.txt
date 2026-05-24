@@ -1,0 +1,53 @@
+==================
+number02
+==================
+
+123.456;
+0.456;
+.01234;
+123e5;
+123e-5;
+123.456e+5;
+0.456e-5;
+
+---
+(source_file
+	(statement
+		(expression
+			(literal
+				(float))))
+	(statement
+		(expression
+			(literal
+				(float))))
+	(statement
+		(expression
+			(literal
+				(float))))
+	(statement
+		(expression
+			(literal
+				(integer))))
+	(ERROR
+		(identifier))
+	(statement
+		(expression
+			(binary_expression
+				(expression
+					(literal
+						(integer)))
+				(ERROR
+					(identifier))
+				(expression
+					(literal
+						(integer))))))
+	(statement
+		(expression
+			(literal
+				(float))))
+	(statement
+		(expression
+			(literal
+				(float)))))
+
+

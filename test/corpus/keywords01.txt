@@ -1,0 +1,23 @@
+==================
+keywords01
+==================
+
+FALSE;
+EMPTY;
+TRUE;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (constant
+        (keyword_false))))
+  (statement
+    (expression
+      (constant
+        (keyword_empty))))
+  (statement
+    (expression
+      (constant
+        (keyword_true)))))

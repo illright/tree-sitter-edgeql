@@ -1,0 +1,21 @@
+==================
+ident02
+==================
+
+CREATE TYPE std::delete_pointer;
+
+---
+
+(source_file
+  (statement
+    (command_statement
+      (command_keyword
+        (keyword_create))
+      (expression
+        (name
+          (identifier)))
+      (expression
+        (module_qualified_name
+          (builtin_module)
+          (name
+            (identifier)))))))

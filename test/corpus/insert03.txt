@@ -1,0 +1,96 @@
+==================
+insert03
+==================
+
+WITH MODULE test
+INSERT InsertTest {
+    name := 'insert nested 2',
+    l2 := 0,
+    subordinates := (
+        SELECT Subordinate {
+            @comment := (SELECT 'comment ' + Subordinate.name)
+        }
+        FILTER Subordinate.name IN {'subtest 3', 'subtest 4'}
+    )
+};
+
+---
+
+(source_file
+  (statement
+    (with_statement
+      (keyword_with)
+      (with_module_clause
+        (keyword_module)
+        (name
+          (identifier)))
+      (statement
+        (insert_statement
+          (keyword_insert)
+          (type_name
+            (name
+              (identifier)))
+          (shape_literal
+            (shape_element
+              (name
+                (identifier))
+              (expression
+                (literal
+                  (string))))
+            (shape_element
+              (name
+                (identifier))
+              (expression
+                (literal
+                  (integer))))
+            (shape_element
+              (name
+                (identifier))
+              (expression
+                (parenthesized_expression
+                  (select_statement
+                    (keyword_select)
+                    (expression
+                      (shaped_expression
+                        (name
+                          (identifier))
+                        (shape_literal
+                          (shape_element
+                            (name
+                              (identifier))
+                            (expression
+                              (parenthesized_expression
+                                (select_statement
+                                  (keyword_select)
+                                  (expression
+                                    (binary_expression
+                                      (expression
+                                        (literal
+                                          (string)))
+                                      (expression
+                                        (path_expression
+                                          (name
+                                            (identifier))
+                                          (path_segment
+                                            (name
+                                              (identifier))))))))))))))
+                    (filter_clause
+                      (keyword_filter)
+                      (expression
+                        (binary_expression
+                          (expression
+                            (path_expression
+                              (name
+                                (identifier))
+                              (path_segment
+                                (name
+                                  (identifier)))))
+                          (keyword_in)
+                          (expression
+                            (set_literal
+                              (expression
+                                (literal
+                                  (string)))
+                              (expression
+                                (literal
+                                  (string))))))))))))))))))

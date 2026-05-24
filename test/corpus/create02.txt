@@ -1,0 +1,43 @@
+==================
+create02
+==================
+
+CREATE AGGREGATE std::array_agg(SET OF std::anytype) -> array<std::anytype>
+    FROM SQL AGGREGATE 'array_agg';
+
+---
+
+(source_file
+  (statement
+    (create_statement
+      (keyword_create)
+      (create_aggregate_statement
+        (keyword_aggregate)
+        (module_qualified_name
+          (builtin_module)
+          (builtin_function))
+        (parameters
+          (positional_parameter
+            (type_expression
+              (set_of_type
+                (keyword_set)
+                (keyword_of)
+                (type_expression
+                  (type_name
+                    (module_qualified_name
+                      (builtin_module)
+                      (builtin_type))))))))
+        (type_expression
+          (generic_type
+            (builtin_type)
+            (type_expression
+              (type_name
+                (module_qualified_name
+                  (builtin_module)
+                  (builtin_type))))))
+        (create_from_clause
+          (keyword_from)
+          (name
+            (identifier))
+          (keyword_aggregate)
+          (string))))))

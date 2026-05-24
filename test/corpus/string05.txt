@@ -1,0 +1,28 @@
+==================
+string05
+==================
+
+r"this is a raw string";
+r"this is a raw 'string'";
+r"this is a raw \rstring\r";
+r"this is a raw \rstring\r";
+
+---
+
+(source_file
+  (statement
+    (expression
+      (literal
+        (raw_string))))
+  (statement
+    (expression
+      (literal
+        (raw_string))))
+  (statement
+    (expression
+      (literal
+        (raw_string))))
+  (statement
+    (expression
+      (literal
+        (raw_string)))))

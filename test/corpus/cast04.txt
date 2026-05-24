@@ -1,0 +1,29 @@
+==================
+cast04
+==================
+
+SELECT Foo.bar OFFSET <int64>'42';
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (path_expression
+          (name
+            (identifier))
+          (path_segment
+            (name
+              (identifier)))))
+      (offset_clause
+        (keyword_offset)
+        (expression
+          (cast_expression
+            (type_expression
+              (type_name
+                (builtin_type)))
+            (expression
+              (literal
+                (string)))))))))

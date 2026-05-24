@@ -1,0 +1,42 @@
+==================
+constraint02
+==================
+
+abstract constraint maxlength($param:any) extending max_value, len_value {
+    errmessage := '{$subject} must be no longer than {$param} characters.';
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_constraint_declaration
+      (keyword_abstract)
+      (keyword_constraint)
+      (name
+        (identifier))
+      (parameters
+        (parameter
+          (variable
+            (identifier))
+          (type_expression
+            (type_name
+              (name
+                (identifier))))))
+      (keyword_extending)
+      (type_expression
+        (type_name
+          (name
+            (identifier))))
+      (type_expression
+        (type_name
+          (name
+            (identifier))))
+      (sdl_block
+        (sdl_statement
+          (sdl_assignment
+            (name
+              (identifier))
+            (expression
+              (literal
+                (string)))))))))

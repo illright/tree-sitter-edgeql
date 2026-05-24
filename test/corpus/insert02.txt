@@ -1,0 +1,70 @@
+==================
+insert02
+==================
+
+INSERT test::InsertTest {
+    name := 'insert nested',
+    l2 := 0,
+    subordinates := (
+        SELECT test::Subordinate
+        FILTER test::Subordinate.name LIKE 'subtest%'
+    )
+};
+
+---
+
+(source_file
+  (statement
+    (insert_statement
+      (keyword_insert)
+      (type_name
+        (module_qualified_name
+          (name
+            (identifier))
+          (name
+            (identifier))))
+      (shape_literal
+        (shape_element
+          (name
+            (identifier))
+          (expression
+            (literal
+              (string))))
+        (shape_element
+          (name
+            (identifier))
+          (expression
+            (literal
+              (integer))))
+        (shape_element
+          (name
+            (identifier))
+          (expression
+            (parenthesized_expression
+              (select_statement
+                (keyword_select)
+                (expression
+                  (module_qualified_name
+                    (name
+                      (identifier))
+                    (name
+                      (identifier))))
+                (filter_clause
+                  (keyword_filter)
+                  (expression
+                    (binary_expression
+                      (expression
+                        (path_expression
+                          (type_name
+                            (module_qualified_name
+                              (name
+                                (identifier))
+                              (name
+                                (identifier))))
+                          (path_segment
+                            (name
+                              (identifier)))))
+                      (keyword_like)
+                      (expression
+                        (literal
+                          (string))))))))))))))

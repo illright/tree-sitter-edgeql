@@ -1,0 +1,33 @@
+==================
+string01
+==================
+
+'this is a string';
+'this is a "string"';
+'this is a \'string\'';
+'this is a \"string\"';
+'this is \a string';
+
+---
+
+(source_file
+  (statement
+    (expression
+      (literal
+        (string))))
+  (statement
+    (expression
+      (literal
+        (string))))
+  (statement
+    (expression
+      (literal
+        (string))))
+  (statement
+    (expression
+      (literal
+        (string))))
+  (statement
+    (expression
+      (literal
+        (string)))))

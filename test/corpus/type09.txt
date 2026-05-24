@@ -1,0 +1,85 @@
+==================
+type09
+==================
+
+type Person {
+  trigger log_insert after update for each do (
+    stuff(__new__.id, __old__.id)
+  );
+
+  trigger log_insert after update for all do (
+    stuff(__new__.id, __old__.id)
+  );
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_trigger
+            (keyword_trigger)
+            (name
+              (identifier))
+            (keyword_after)
+            (keyword_update)
+            (keyword_for)
+            (keyword_each)
+            (keyword_do)
+            (expression
+              (parenthesized_expression
+                (expression
+                  (call_expression
+                    (name
+                      (identifier))
+                    (arguments
+                      (expression
+                        (path_expression
+                          (name
+                            (identifier))
+                          (path_segment
+                            (name
+                              (identifier)))))
+                      (expression
+                        (path_expression
+                          (name
+                            (identifier))
+                          (path_segment
+                            (name
+                              (identifier))))))))))))
+        (sdl_statement
+          (sdl_trigger
+            (keyword_trigger)
+            (name
+              (identifier))
+            (keyword_after)
+            (keyword_update)
+            (keyword_for)
+            (keyword_all)
+            (keyword_do)
+            (expression
+              (parenthesized_expression
+                (expression
+                  (call_expression
+                    (name
+                      (identifier))
+                    (arguments
+                      (expression
+                        (path_expression
+                          (name
+                            (identifier))
+                          (path_segment
+                            (name
+                              (identifier)))))
+                      (expression
+                        (path_expression
+                          (name
+                            (identifier))
+                          (path_segment
+                            (name
+                              (identifier))))))))))))))))

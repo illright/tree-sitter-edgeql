@@ -1,0 +1,46 @@
+==================
+for01
+==================
+
+WITH MODULE test
+FOR C IN {Card}
+UNION (C.name, Card.name);
+
+---
+
+(source_file
+  (statement
+    (with_statement
+      (keyword_with)
+      (with_module_clause
+        (keyword_module)
+        (name
+          (identifier)))
+      (statement
+        (for_statement
+          (keyword_for)
+          (name
+            (identifier))
+          (keyword_in)
+          (expression
+            (set_literal
+              (expression
+                (name
+                  (identifier)))))
+          (keyword_union)
+          (expression
+            (tuple_literal
+              (expression
+                (path_expression
+                  (name
+                    (identifier))
+                  (path_segment
+                    (name
+                      (identifier)))))
+              (expression
+                (path_expression
+                  (name
+                    (identifier))
+                  (path_segment
+                    (name
+                      (identifier))))))))))))

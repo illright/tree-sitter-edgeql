@@ -1,0 +1,43 @@
+==================
+create05
+==================
+
+CREATE FUNCTION test::my_edgeql_func2(std::str)
+        -> sys::Concept
+    FROM EdgeQL $$
+        SELECT
+            sys::Concept
+        FILTER sys::Concept.name = $1
+    $$;
+
+---
+
+(source_file
+  (statement
+    (create_statement
+      (keyword_create)
+      (create_function_statement
+        (keyword_function)
+        (module_qualified_name
+          (name
+            (identifier))
+          (name
+            (identifier)))
+        (parameters
+          (positional_parameter
+            (type_expression
+              (type_name
+                (module_qualified_name
+                  (builtin_module)
+                  (builtin_type))))))
+        (type_expression
+          (type_name
+            (module_qualified_name
+              (builtin_module)
+              (name
+                (identifier)))))
+        (create_from_clause
+          (keyword_from)
+          (name
+            (identifier))
+          (dollar_string))))))

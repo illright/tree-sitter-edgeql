@@ -7,3 +7,4 @@ src/tree_sitter/alloc.h
 src/tree_sitter/array.h
 src/grammar.json
 src/node-types.json
+*.wasm

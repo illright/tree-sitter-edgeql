@@ -1,0 +1,46 @@
+==================
+bytes01
+==================
+
+b'this is a bytestring';
+b'this is a "bytestring"';
+b'this is a \'bytestring\'';
+b'this is a \"bytestring\"';
+b'this \n is \\ a \xbb bytestring';
+b'this is a bad \xqq \a bytestring я';
+b'this is a bad bytestring \
+';
+
+---
+
+(source_file
+  (statement
+    (expression
+      (literal
+        (bytes))))
+  (statement
+    (expression
+      (literal
+        (bytes))))
+  (statement
+    (expression
+      (literal
+        (bytes))))
+  (statement
+    (expression
+      (literal
+        (bytes))))
+  (statement
+    (expression
+      (literal
+        (bytes))))
+  (statement
+    (expression
+      (literal
+        (bytes))))
+  (statement
+    (expression
+      (name
+        (identifier))))
+  (ERROR
+    (UNEXPECTED '\n')))

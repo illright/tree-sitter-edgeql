@@ -1,0 +1,27 @@
+==================
+insert01
+==================
+
+INSERT test::Subordinate {
+    name := 'subtest 1'
+};
+
+---
+
+(source_file
+  (statement
+    (insert_statement
+      (keyword_insert)
+      (type_name
+        (module_qualified_name
+          (name
+            (identifier))
+          (name
+            (identifier))))
+      (shape_literal
+        (shape_element
+          (name
+            (identifier))
+          (expression
+            (literal
+              (string))))))))

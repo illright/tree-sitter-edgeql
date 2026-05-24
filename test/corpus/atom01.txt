@@ -1,0 +1,76 @@
+==================
+atom01
+==================
+
+scalar basic extending int64 {
+    title := 'Basic Atom';
+    default := 2;
+
+    constraint min(0);
+    constraint max(123456);
+    delegated constraint expr on (__subject__ % 2 = 0);
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_scalar_declaration
+      (keyword_scalar)
+      (name
+        (identifier))
+      (keyword_extending)
+      (type_expression
+        (type_name
+          (builtin_type)))
+      (sdl_block
+        (sdl_statement
+          (sdl_assignment
+            (name
+              (identifier))
+            (expression
+              (literal
+                (string)))))
+        (sdl_statement
+          (sdl_assignment
+            (keyword_default)
+            (expression
+              (literal
+                (integer)))))
+        (sdl_statement
+          (sdl_constraint
+            (keyword_constraint)
+            (builtin_function)
+            (arguments
+              (expression
+                (literal
+                  (integer))))))
+        (sdl_statement
+          (sdl_constraint
+            (keyword_constraint)
+            (builtin_function)
+            (arguments
+              (expression
+                (literal
+                  (integer))))))
+        (sdl_statement
+          (sdl_constraint
+            (keyword_delegated)
+            (keyword_constraint)
+            (name
+              (identifier))
+            (keyword_on)
+            (parenthesized_expression
+              (expression
+                (binary_expression
+                  (expression
+                    (binary_expression
+                      (expression
+                        (name
+                          (identifier)))
+                      (expression
+                        (literal
+                          (integer)))))
+                  (expression
+                    (literal
+                      (integer))))))))))))

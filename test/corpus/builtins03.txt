@@ -1,0 +1,63 @@
+==================
+builtins03
+==================
+
+std::constraint;
+max_value;
+one_of;
+expression;
+min_value;
+regexp;
+exclusive;
+enum<'aaa', 'bbb'>;
+range<int64>;
+multirange<int64>;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (module_qualified_name
+        (builtin_module)
+        (builtin_constraint))))
+  (statement
+    (expression
+      (builtin_constraint)))
+  (statement
+    (expression
+      (builtin_constraint)))
+  (statement
+    (expression
+      (builtin_constraint)))
+  (statement
+    (expression
+      (builtin_constraint)))
+  (statement
+    (expression
+      (builtin_constraint)))
+  (statement
+    (expression
+      (builtin_constraint)))
+  (statement
+    (expression
+      (generic_type
+        (builtin_type)
+        (literal
+          (string))
+        (literal
+          (string)))))
+  (statement
+    (expression
+      (generic_type
+        (builtin_type)
+        (type_expression
+          (type_name
+            (builtin_type))))))
+  (statement
+    (expression
+      (generic_type
+        (builtin_type)
+        (type_expression
+          (type_name
+            (builtin_type)))))))

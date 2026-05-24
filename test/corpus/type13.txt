@@ -1,0 +1,24 @@
+==================
+type13
+==================
+
+type Foo {
+    enum_prop: Endian;
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_pointer
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type)))))))))

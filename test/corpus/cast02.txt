@@ -1,0 +1,34 @@
+==================
+cast02
+==================
+
+SELECT Foo.bar LIKE <str>Foo.baz;
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (binary_expression
+          (expression
+            (path_expression
+              (name
+                (identifier))
+              (path_segment
+                (name
+                  (identifier)))))
+          (keyword_like)
+          (expression
+            (cast_expression
+              (type_expression
+                (type_name
+                  (builtin_type)))
+              (expression
+                (path_expression
+                  (name
+                    (identifier))
+                  (path_segment
+                    (name
+                      (identifier))))))))))))

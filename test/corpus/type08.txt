@@ -1,0 +1,20 @@
+==================
+type08
+==================
+
+type Status extending Named;
+
+---
+(source_file
+	(statement
+		(sdl_type_declaration
+			(keyword_type)
+			(name
+				(identifier))
+			(keyword_extending)
+			(type_expression
+				(type_name
+					(name
+						(identifier)))))))
+
+

@@ -1,0 +1,27 @@
+==================
+cast01
+==================
+
+SELECT NOT <bool>Foo.baz;
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (unary_expression
+          (keyword_not)
+          (expression
+            (cast_expression
+              (type_expression
+                (type_name
+                  (builtin_type)))
+              (expression
+                (path_expression
+                  (name
+                    (identifier))
+                  (path_segment
+                    (name
+                      (identifier))))))))))))

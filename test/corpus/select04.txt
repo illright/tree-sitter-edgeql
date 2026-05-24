@@ -1,0 +1,59 @@
+==================
+select04
+==================
+
+SELECT Foo {
+    bar: {
+        baz := (SELECT Doo {foo}),
+        spam,
+    },
+    back_foo := Foo.<foo,
+    ham,
+};
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (shaped_expression
+          (name
+            (identifier))
+          (shape_literal
+            (shape_element
+              (name
+                (identifier))
+              (shape_literal
+                (shape_element
+                  (name
+                    (identifier))
+                  (expression
+                    (parenthesized_expression
+                      (select_statement
+                        (keyword_select)
+                        (expression
+                          (shaped_expression
+                            (name
+                              (identifier))
+                            (shape_literal
+                              (shape_element
+                                (name
+                                  (identifier))))))))))
+                (shape_element
+                  (name
+                    (identifier)))))
+            (shape_element
+              (name
+                (identifier))
+              (expression
+                (path_expression
+                  (name
+                    (identifier))
+                  (path_segment
+                    (name
+                      (identifier))))))
+            (shape_element
+              (name
+                (identifier)))))))))

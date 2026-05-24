@@ -1,0 +1,50 @@
+==================
+create01
+==================
+
+CreatE CONSTRAINT std::regexp EXTENDING std::constraint {
+    SET errmessage := 'invalid {subject}';
+    SET expr := re_test(subject, $0);
+};
+
+---
+
+(source_file
+  (statement
+    (create_statement
+      (keyword_create)
+      (create_constraint_statement
+        (builtin_constraint)
+        (module_qualified_name
+          (builtin_module)
+          (builtin_constraint))
+        (keyword_extending)
+        (type_expression
+          (type_name
+            (module_qualified_name
+              (builtin_module)
+              (builtin_constraint))))
+        (create_body_block
+          (create_body_statement
+            (create_set_statement
+              (keyword_set)
+              (name
+                (identifier))
+              (expression
+                (literal
+                  (string)))))
+          (create_body_statement
+            (create_set_statement
+              (keyword_set)
+              (name
+                (identifier))
+              (expression
+                (call_expression
+                  (builtin_function)
+                  (arguments
+                    (expression
+                      (name
+                        (identifier)))
+                    (expression
+                      (variable
+                        (integer)))))))))))))

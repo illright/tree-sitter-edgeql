@@ -1,0 +1,36 @@
+==================
+link01
+==================
+
+abstract link todo {
+    property rank -> int64 {
+        default := 42;
+    }
+}
+
+---
+(source_file
+    (statement
+        (sdl_link_declaration
+            (keyword_abstract)
+            (keyword_link)
+            (name
+                (identifier))
+            (sdl_block
+                (sdl_statement
+                    (sdl_property
+                        (keyword_property)
+                        (name
+                            (identifier))
+                        (type_expression
+                            (type_name
+                                (builtin_type)))
+                        (sdl_block
+                            (sdl_statement
+                                (sdl_assignment
+                                    (keyword_default)
+                                    (expression
+                                        (literal
+                                            (integer))))))))))))
+
+

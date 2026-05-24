@@ -1,0 +1,13 @@
+==================
+keywords02
+:error
+==================
+
+FOR;
+SELECT;
+GROUP;
+INSERT;
+UPDATE;
+DELETE;
+
+---

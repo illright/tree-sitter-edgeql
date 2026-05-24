@@ -1,0 +1,57 @@
+==================
+scalar01
+==================
+
+scalar type constraint_length extending str {
+    constraint max_len_value(16);
+    constraint max_len_value(10);
+    constraint min_len_value(5);
+    constraint min_len_value(8);
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_scalar_declaration
+      (keyword_scalar)
+      (keyword_type)
+      (name
+        (identifier))
+      (keyword_extending)
+      (type_expression
+        (type_name
+          (builtin_type)))
+      (sdl_block
+        (sdl_statement
+          (sdl_constraint
+            (keyword_constraint)
+            (builtin_constraint)
+            (arguments
+              (expression
+                (literal
+                  (integer))))))
+        (sdl_statement
+          (sdl_constraint
+            (keyword_constraint)
+            (builtin_constraint)
+            (arguments
+              (expression
+                (literal
+                  (integer))))))
+        (sdl_statement
+          (sdl_constraint
+            (keyword_constraint)
+            (builtin_constraint)
+            (arguments
+              (expression
+                (literal
+                  (integer))))))
+        (sdl_statement
+          (sdl_constraint
+            (keyword_constraint)
+            (builtin_constraint)
+            (arguments
+              (expression
+                (literal
+                  (integer))))))))))

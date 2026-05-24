@@ -1,0 +1,23 @@
+==================
+number01
+==================
+
+123;
+123_456;
+1_2_3_4_5_6;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (literal
+        (integer))))
+  (statement
+    (expression
+      (literal
+        (integer))))
+  (statement
+    (expression
+      (literal
+        (integer)))))

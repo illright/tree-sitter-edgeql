@@ -1,0 +1,108 @@
+==================
+group02
+==================
+
+WITH MODULE test
+GROUP Issue
+USING B :=  Issue.status.name
+BY B
+INTO Issue
+UNION _ := (
+    sum := sum(<int64>Issue.number),
+    status := B,
+)
+FILTER
+    _.sum > 5
+ORDER BY
+    B;
+
+---
+
+(source_file
+  (statement
+    (with_statement
+      (keyword_with)
+      (with_module_clause
+        (keyword_module)
+        (name
+          (identifier)))
+      (statement
+        (group_statement
+          (keyword_group)
+          (expression
+            (name
+              (identifier)))
+          (group_using_clause
+            (keyword_using)
+            (with_binding
+              (name
+                (identifier))
+              (expression
+                (path_expression
+                  (name
+                    (identifier))
+                  (path_segment
+                    (name
+                      (identifier)))
+                  (path_segment
+                    (name
+                      (identifier)))))))
+          (group_by_clause
+            (keyword_by)
+            (expression
+              (name
+                (identifier))))
+          (group_into_clause
+            (keyword_into)
+            (name
+              (identifier)))
+          (keyword_union)
+          (definition
+            (name
+              (identifier))
+            (expression
+              (tuple_literal
+                (definition
+                  (builtin_function)
+                  (expression
+                    (call_expression
+                      (builtin_function)
+                      (arguments
+                        (expression
+                          (cast_expression
+                            (type_expression
+                              (type_name
+                                (builtin_type)))
+                            (expression
+                              (path_expression
+                                (name
+                                  (identifier))
+                                (path_segment
+                                  (name
+                                    (identifier)))))))))))
+                (definition
+                  (name
+                    (identifier))
+                  (expression
+                    (name
+                      (identifier)))))))
+          (filter_clause
+            (keyword_filter)
+            (expression
+              (binary_expression
+                (expression
+                  (path_expression
+                    (name
+                      (identifier))
+                    (path_segment
+                      (name
+                        (identifier)))))
+                (expression
+                  (literal
+                    (integer))))))
+          (order_clause
+            (keyword_order)
+            (keyword_by)
+            (expression
+              (name
+                (identifier)))))))))

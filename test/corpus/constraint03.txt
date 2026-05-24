@@ -1,0 +1,49 @@
+==================
+constraint03
+==================
+
+abstract constraint max($param:any) on (()) {
+    expr := __subject__ <= $param;
+    errmessage := 'Maximum allowed value for {subject} is {param}.';
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_constraint_declaration
+      (keyword_abstract)
+      (keyword_constraint)
+      (builtin_function)
+      (parameters
+        (parameter
+          (variable
+            (identifier))
+          (type_expression
+            (type_name
+              (name
+                (identifier))))))
+      (keyword_on)
+      (parenthesized_expression
+        (expression
+          (empty_tuple_literal)))
+      (sdl_block
+        (sdl_statement
+          (sdl_assignment
+            (name
+              (identifier))
+            (expression
+              (binary_expression
+                (expression
+                  (name
+                    (identifier)))
+                (expression
+                  (variable
+                    (identifier)))))))
+        (sdl_statement
+          (sdl_assignment
+            (name
+              (identifier))
+            (expression
+              (literal
+                (string)))))))))

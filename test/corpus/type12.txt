@@ -1,0 +1,43 @@
+==================
+type12
+==================
+
+type RangeTest {
+    required rval: range<int64>;
+    index pg::gist on (.rval);
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_pointer
+            (keyword_required)
+            (name
+              (identifier))
+            (type_expression
+              (generic_type
+                (builtin_type)
+                (type_expression
+                  (type_name
+                    (builtin_type)))))))
+        (sdl_statement
+          (sdl_index
+            (keyword_index)
+            (module_qualified_name
+              (builtin_module)
+              (builtin_index))
+            (keyword_on)
+            (expression
+              (parenthesized_expression
+                (expression
+                  (relative_path_expression
+                    (path_segment
+                      (name
+                        (identifier)))))))))))))

@@ -1,0 +1,74 @@
+==================
+type11
+==================
+
+type User {
+  required body: str;
+  index fts::index on (
+    fts::with_options(.body,
+        language := fts::Language.eng,
+        weight_category := fts::Weight.A
+    )
+  );
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_pointer
+            (keyword_required)
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type)))))
+        (sdl_statement
+          (sdl_index
+            (keyword_index)
+            (module_qualified_name
+              (builtin_module)
+              (builtin_index))
+            (keyword_on)
+            (expression
+              (parenthesized_expression
+                (expression
+                  (call_expression
+                    (module_qualified_name
+                      (builtin_module)
+                      (builtin_function))
+                    (arguments
+                      (expression
+                        (relative_path_expression
+                          (path_segment
+                            (name
+                              (identifier)))))
+                      (definition
+                        (builtin_type)
+                        (expression
+                          (path_expression
+                            (type_name
+                              (module_qualified_name
+                                (builtin_module)
+                                (builtin_type)))
+                            (path_segment
+                              (name
+                                (identifier))))))
+                      (definition
+                        (name
+                          (identifier))
+                        (expression
+                          (path_expression
+                            (type_name
+                              (module_qualified_name
+                                (builtin_module)
+                                (builtin_type)))
+                            (path_segment
+                              (name
+                                (identifier)))))))))))))))))

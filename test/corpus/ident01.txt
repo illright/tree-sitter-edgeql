@@ -1,0 +1,17 @@
+==================
+ident01
+==================
+
+INSERT std::delete_pointer;
+
+---
+
+(source_file
+  (statement
+    (insert_statement
+      (keyword_insert)
+      (type_name
+        (module_qualified_name
+          (builtin_module)
+          (name
+            (identifier)))))))

@@ -1,0 +1,23 @@
+==================
+string03
+==================
+
+$$this is a string$$;
+
+$a$this is a "string"$a$;
+
+$w__2$this is a \'string\'$w__2$;
+
+$q123$this is a \"string\"$q123$;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (literal
+        (dollar_string))))
+  (statement
+    (expression
+      (literal
+        (dollar_string)))))

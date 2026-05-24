@@ -1,0 +1,34 @@
+==================
+import01
+==================
+
+import mylib.util.foo as foo, mylib.special.foo as sfoo;
+
+---
+
+(source_file
+  (statement
+    (import_statement
+      (keyword_import)
+      (import_module
+        (import_path
+          (name
+            (identifier))
+          (name
+            (identifier))
+          (name
+            (identifier)))
+        (keyword_as)
+        (name
+          (identifier)))
+      (import_module
+        (import_path
+          (name
+            (identifier))
+          (name
+            (identifier))
+          (name
+            (identifier)))
+        (keyword_as)
+        (name
+          (identifier))))))

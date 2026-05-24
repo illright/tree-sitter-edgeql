@@ -1,0 +1,23 @@
+==================
+number03
+==================
+
+123n;
+123_456n;
+1_2_3_4_5_6n;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (literal
+        (decimal))))
+  (statement
+    (expression
+      (literal
+        (decimal))))
+  (statement
+    (expression
+      (literal
+        (decimal)))))

@@ -1,0 +1,49 @@
+==================
+select02
+==================
+
+SELECT
+    test::User {
+        id,
+    }
+FILTER
+    ((test::User).score = $val);
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (shaped_expression
+          (path_expression
+            (name
+              (identifier))
+            (name
+              (identifier)))
+          (shape_literal
+            (shape_element
+              (name
+                (identifier))))))
+      (filter_clause
+        (keyword_filter)
+        (expression
+          (parenthesized_expression
+            (expression
+              (binary_expression
+                (expression
+                  (path_expression
+                    (parenthesized_expression
+                      (expression
+                        (module_qualified_name
+                          (name
+                            (identifier))
+                          (name
+                            (identifier)))))
+                    (path_segment
+                      (name
+                        (identifier)))))
+                (expression
+                  (variable
+                    (identifier)))))))))))

@@ -1,0 +1,29 @@
+==================
+cast03
+==================
+
+SELECT Foo.bar LIMIT <int64>'42';
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (path_expression
+          (name
+            (identifier))
+          (path_segment
+            (name
+              (identifier)))))
+      (limit_clause
+        (keyword_limit)
+        (expression
+          (cast_expression
+            (type_expression
+              (type_name
+                (builtin_type)))
+            (expression
+              (literal
+                (string)))))))))

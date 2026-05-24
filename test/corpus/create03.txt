@@ -1,0 +1,51 @@
+==================
+create03
+==================
+
+CREATE FUNCTION std::len(array<std::anytype>) -> std::int64
+    FROM SQL $$
+        SELECT array_length($1, 1)::bigint
+    $$;
+array<std::anytype>;  # back to edgeql
+
+---
+
+(source_file
+  (statement
+    (create_statement
+      (keyword_create)
+      (create_function_statement
+        (keyword_function)
+        (module_qualified_name
+          (builtin_module)
+          (builtin_function))
+        (parameters
+          (positional_parameter
+            (type_expression
+              (generic_type
+                (builtin_type)
+                (type_expression
+                  (type_name
+                    (module_qualified_name
+                      (builtin_module)
+                      (builtin_type))))))))
+        (type_expression
+          (type_name
+            (module_qualified_name
+              (builtin_module)
+              (builtin_type))))
+        (create_from_clause
+          (keyword_from)
+          (name
+            (identifier))
+          (dollar_string)))))
+  (statement
+    (expression
+      (generic_type
+        (builtin_type)
+        (type_expression
+          (type_name
+            (module_qualified_name
+              (builtin_module)
+              (builtin_type)))))))
+  (comment))

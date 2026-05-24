@@ -1,0 +1,52 @@
+==================
+names01
+==================
+
+CREATE DATABASE mytestdb;
+CREATE DATABASE `mytestdb`;
+CREATE DATABASE `SET`;
+CREATE DATABASE `CREATE`;
+
+---
+
+(source_file
+  (statement
+    (command_statement
+      (command_keyword
+        (keyword_create))
+      (expression
+        (name
+          (identifier)))
+      (expression
+        (name
+          (identifier)))))
+  (statement
+    (command_statement
+      (command_keyword
+        (keyword_create))
+      (expression
+        (name
+          (identifier)))
+      (expression
+        (name
+          (quoted_name)))))
+  (statement
+    (command_statement
+      (command_keyword
+        (keyword_create))
+      (expression
+        (name
+          (identifier)))
+      (expression
+        (name
+          (quoted_name)))))
+  (statement
+    (command_statement
+      (command_keyword
+        (keyword_create))
+      (expression
+        (name
+          (identifier)))
+      (expression
+        (name
+          (quoted_name))))))

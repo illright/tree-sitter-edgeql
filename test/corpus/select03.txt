@@ -1,0 +1,44 @@
+==================
+select03
+==================
+
+SELECT
+    mod2::Person {
+        id,
+        name,
+        groups: {
+            id,
+            name,
+        }
+    };
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (shaped_expression
+          (path_expression
+            (name
+              (identifier))
+            (name
+              (identifier)))
+          (shape_literal
+            (shape_element
+              (name
+                (identifier)))
+            (shape_element
+              (name
+                (identifier)))
+            (shape_element
+              (name
+                (identifier))
+              (shape_literal
+                (shape_element
+                  (name
+                    (identifier)))
+                (shape_element
+                  (name
+                    (identifier)))))))))))

@@ -1,0 +1,77 @@
+==================
+names03
+==================
+
+foo::std;
+Foo.std;
+Foo.<std;
+Foo.>std;
+foo::select;
+Foo.select;
+Foo.<select;
+Foo.>select;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (module_qualified_name
+        (name
+          (identifier))
+        (builtin_module))))
+  (statement
+    (expression
+      (path_expression
+        (name
+          (identifier))
+        (path_segment
+          (name
+            (identifier))))))
+  (statement
+    (expression
+      (path_expression
+        (name
+          (identifier))
+        (path_segment
+          (name
+            (identifier))))))
+  (statement
+    (expression
+      (path_expression
+        (name
+          (identifier))
+        (path_segment
+          (name
+            (identifier))))))
+  (statement
+    (expression
+      (module_qualified_name
+        (name
+          (identifier))
+        (name
+          (identifier)))))
+  (statement
+    (expression
+      (path_expression
+        (name
+          (identifier))
+        (path_segment
+          (name
+            (identifier))))))
+  (statement
+    (expression
+      (path_expression
+        (name
+          (identifier))
+        (path_segment
+          (name
+            (identifier))))))
+  (statement
+    (expression
+      (path_expression
+        (name
+          (identifier))
+        (path_segment
+          (name
+            (identifier)))))))

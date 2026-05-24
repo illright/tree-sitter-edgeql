@@ -1,0 +1,18 @@
+==================
+delete01
+==================
+
+DELETE test::DeleteTest;
+
+---
+
+(source_file
+  (statement
+    (delete_statement
+      (keyword_delete)
+      (expression
+        (module_qualified_name
+          (name
+            (identifier))
+          (name
+            (identifier)))))))

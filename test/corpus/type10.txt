@@ -1,0 +1,80 @@
+==================
+type10
+==================
+
+type User {
+  created: datetime {
+    rewrite insert using (datetime_of_statement());
+  };
+  modified: datetime {
+    rewrite update using (
+      datetime_of_statement()
+      if __specified__.modified
+      else .modified
+    );
+  }
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_pointer
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type)))
+            (sdl_block
+              (sdl_statement
+                (sdl_rewrite
+                  (keyword_rewrite)
+                  (keyword_insert)
+                  (keyword_using)
+                  (expression
+                    (parenthesized_expression
+                      (expression
+                        (call_expression
+                          (builtin_function)
+                          (arguments))))))))))
+        (sdl_statement
+          (sdl_pointer
+            (name
+              (identifier))
+            (type_expression
+              (type_name
+                (builtin_type)))
+            (sdl_block
+              (sdl_statement
+                (sdl_rewrite
+                  (keyword_rewrite)
+                  (keyword_update)
+                  (keyword_using)
+                  (expression
+                    (parenthesized_expression
+                      (expression
+                        (conditional_expression
+                          (expression
+                            (call_expression
+                              (builtin_function)
+                              (arguments)))
+                          (keyword_if)
+                          (expression
+                            (path_expression
+                              (name
+                                (identifier))
+                              (path_segment
+                                (name
+                                  (identifier)))))
+                          (keyword_else)
+                          (expression
+                            (relative_path_expression
+                              (path_segment
+                                (name
+                                  (identifier))))))))))))))))))

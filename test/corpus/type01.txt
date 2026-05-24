@@ -1,0 +1,22 @@
+==================
+type01
+==================
+
+type User extending std::NamedObject;
+
+---
+(source_file
+	(statement
+		(sdl_type_declaration
+			(keyword_type)
+			(name
+				(identifier))
+			(keyword_extending)
+			(type_expression
+				(type_name
+					(module_qualified_name
+						(builtin_module)
+						(name
+							(identifier))))))))
+
+

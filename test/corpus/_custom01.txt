@@ -1,0 +1,87 @@
+==================
+custom01
+==================
+
+WITH MODULE schema
+    SELECT ObjectType {
+      name,
+      annotations: { name, @value },
+      pointers: {
+        name,
+        annotations: { name, @value }
+      } filter .name != "__type__" and .name != 'id'
+    }
+
+---
+
+(source_file
+  (statement
+    (with_statement
+      (keyword_with)
+      (with_module_clause
+        (keyword_module)
+        (builtin_module))
+      (statement
+        (select_statement
+          (keyword_select)
+          (expression
+            (shaped_expression
+              (name
+                (identifier))
+              (shape_literal
+                (shape_element
+                  (name
+                    (identifier)))
+                (shape_element
+                  (name
+                    (identifier))
+                  (shape_literal
+                    (shape_element
+                      (name
+                        (identifier)))
+                    (shape_element
+                      (name
+                        (identifier)))))
+                (shape_element
+                  (name
+                    (identifier))
+                  (shape_literal
+                    (shape_element
+                      (name
+                        (identifier)))
+                    (shape_element
+                      (name
+                        (identifier))
+                      (shape_literal
+                        (shape_element
+                          (name
+                            (identifier)))
+                        (shape_element
+                          (name
+                            (identifier))))))
+                  (shape_element_modifiers
+                    (shape_filter_clause
+                      (keyword_filter)
+                      (expression
+                        (binary_expression
+                          (expression
+                            (binary_expression
+                              (expression
+                                (relative_path_expression
+                                  (path_segment
+                                    (name
+                                      (identifier)))))
+                              (expression
+                                (literal
+                                  (string)))))
+                          (keyword_and)
+                          (expression
+                            (binary_expression
+                              (expression
+                                (relative_path_expression
+                                  (path_segment
+                                    (name
+                                      (identifier)))))
+                              (expression
+                                (literal
+                                  (string))))))))))))))))))

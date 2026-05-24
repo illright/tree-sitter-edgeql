@@ -1,0 +1,44 @@
+==================
+call01
+==================
+
+type Foo {
+    property avg_rating :=
+        math::mean(__source__.<movie[IS Review].rating);
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_property
+            (keyword_property)
+            (name
+              (identifier))
+            (expression
+              (call_expression
+                (module_qualified_name
+                  (builtin_module)
+                  (builtin_function))
+                (arguments
+                  (expression
+                    (path_expression
+                      (name
+                        (identifier))
+                      (path_segment
+                        (name
+                          (identifier))
+                        (path_type_filter
+                          (keyword_is)
+                          (type_name
+                            (name
+                              (identifier)))))
+                      (path_segment
+                        (name
+                          (identifier))))))))))))))

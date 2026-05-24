@@ -1,0 +1,37 @@
+==================
+type04
+==================
+
+type LogEntry extending OwnedObject, Text {
+    required property spent_time to int64;
+}
+
+---
+(source_file
+    (statement
+        (sdl_type_declaration
+            (keyword_type)
+            (name
+                (identifier))
+            (keyword_extending)
+            (type_expression
+                (type_name
+                    (name
+                        (identifier))))
+            (type_expression
+                (type_name
+                    (name
+                        (identifier))))
+            (sdl_block
+                (sdl_statement
+                    (sdl_property
+                        (keyword_required)
+                        (keyword_property)
+                        (name
+                            (identifier))
+                        (keyword_to)
+                        (type_expression
+                            (type_name
+                                (builtin_type)))))))))
+
+

@@ -1,0 +1,54 @@
+==================
+type07
+==================
+
+type Issue extending foo.bar::NamedObject, Text {
+    multi link watchers to User;
+    required single link owner to User;
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_type)
+      (name
+        (identifier))
+      (keyword_extending)
+      (type_expression
+        (dotted_module_qualified_name
+          (name
+            (identifier))
+          (name
+            (identifier))
+          (name
+            (identifier))))
+      (type_expression
+        (type_name
+          (name
+            (identifier))))
+      (sdl_block
+        (sdl_statement
+          (sdl_link
+            (keyword_multi)
+            (keyword_link)
+            (name
+              (identifier))
+            (keyword_to)
+            (type_expression
+              (type_name
+                (name
+                  (identifier))))))
+        (sdl_statement
+          (sdl_link
+            (keyword_required)
+            (keyword_single)
+            (keyword_link)
+            (name
+              (identifier))
+            (keyword_to)
+            (type_expression
+              (type_name
+                (name
+                  (identifier))))))))))

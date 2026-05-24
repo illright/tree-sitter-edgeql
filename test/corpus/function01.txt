@@ -1,0 +1,36 @@
+==================
+function01
+==================
+
+function len() -> std::int64 {
+    from sql function 'length';
+}
+
+---
+
+(source_file
+  (statement
+    (function_statement
+      (keyword_function)
+      (name
+        (identifier))
+      (parameters)
+      (type_expression
+        (type_name
+          (module_qualified_name
+            (builtin_module)
+            (builtin_type))))
+      (block
+        (statement
+          (command_statement
+            (command_keyword
+              (keyword_from))
+            (expression
+              (name
+                (identifier)))
+            (expression
+              (name
+                (identifier)))
+            (expression
+              (literal
+                (string)))))))))

@@ -1,0 +1,60 @@
+==================
+select01
+==================
+
+SELECT
+    test::NamedObject {
+        abc,
+        defd,
+        name: {
+            @lang
+        }
+    }
+FILTER
+    test::`NamedObject`.name = 'Test';
+
+---
+
+(source_file
+  (statement
+    (select_statement
+      (keyword_select)
+      (expression
+        (shaped_expression
+          (path_expression
+            (name
+              (identifier))
+            (name
+              (identifier)))
+          (shape_literal
+            (shape_element
+              (name
+                (identifier)))
+            (shape_element
+              (name
+                (identifier)))
+            (shape_element
+              (name
+                (identifier))
+              (shape_literal
+                (shape_element
+                  (name
+                    (identifier))))))))
+      (filter_clause
+        (keyword_filter)
+        (expression
+          (binary_expression
+            (expression
+              (path_expression
+                (type_name
+                  (module_qualified_name
+                    (name
+                      (identifier))
+                    (name
+                      (quoted_name))))
+                (path_segment
+                  (name
+                    (identifier)))))
+            (expression
+              (literal
+                (string)))))))))

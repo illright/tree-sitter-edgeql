@@ -1,0 +1,54 @@
+==================
+type06
+==================
+
+type LogEntry extending OwnedObject, Text {
+    property start_date to datetime {
+       default := datetime_current();
+       title := 'Start Date';
+    }
+}
+
+---
+(source_file
+    (statement
+        (sdl_type_declaration
+            (keyword_type)
+            (name
+                (identifier))
+            (keyword_extending)
+            (type_expression
+                (type_name
+                    (name
+                        (identifier))))
+            (type_expression
+                (type_name
+                    (name
+                        (identifier))))
+            (sdl_block
+                (sdl_statement
+                    (sdl_property
+                        (keyword_property)
+                        (name
+                            (identifier))
+                        (keyword_to)
+                        (type_expression
+                            (type_name
+                                (builtin_type)))
+                        (sdl_block
+                            (sdl_statement
+                                (sdl_assignment
+                                    (keyword_default)
+                                    (expression
+                                        (call_expression
+                                            (builtin_function)
+                                            (arguments)))))
+                            (sdl_statement
+                                (sdl_assignment
+                                    (name
+                                        (identifier))
+                                    (expression
+                                        (literal
+                                            (string))))))))))))
+
+

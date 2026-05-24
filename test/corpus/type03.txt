@@ -1,0 +1,42 @@
+==================
+type03
+==================
+
+abstract type Text {
+    required property body to std::str {
+        constraint maxlength(10000);
+    }
+}
+
+---
+
+(source_file
+  (statement
+    (sdl_type_declaration
+      (keyword_abstract)
+      (keyword_type)
+      (name
+        (identifier))
+      (sdl_block
+        (sdl_statement
+          (sdl_property
+            (keyword_required)
+            (keyword_property)
+            (name
+              (identifier))
+            (keyword_to)
+            (type_expression
+              (type_name
+                (module_qualified_name
+                  (builtin_module)
+                  (builtin_type))))
+            (sdl_block
+              (sdl_statement
+                (sdl_constraint
+                  (keyword_constraint)
+                  (name
+                    (identifier))
+                  (arguments
+                    (expression
+                      (literal
+                        (integer)))))))))))))

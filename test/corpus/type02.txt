@@ -1,0 +1,30 @@
+==================
+type02
+==================
+
+abstract type OwnedObject {
+    required link owner to User;
+}
+
+---
+(source_file
+    (statement
+        (sdl_type_declaration
+            (keyword_abstract)
+            (keyword_type)
+            (name
+                (identifier))
+            (sdl_block
+                (sdl_statement
+                    (sdl_link
+                        (keyword_required)
+                        (keyword_link)
+                        (name
+                            (identifier))
+                        (keyword_to)
+                        (type_expression
+                            (type_name
+                                (name
+                                    (identifier))))))))))
+
+

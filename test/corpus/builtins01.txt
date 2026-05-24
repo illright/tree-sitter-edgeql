@@ -1,0 +1,44 @@
+==================
+builtins01
+==================
+
+cal;
+cfg;
+enc;
+ext;
+fts;
+math;
+pg;
+std;
+sys;
+
+---
+
+(source_file
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module)))
+  (statement
+    (expression
+      (builtin_module))))

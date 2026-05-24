@@ -1,0 +1,76 @@
+==================
+function03
+==================
+
+function myfunc($arg1: str, $arg2: str = 'DEFAULT',
+                variadic $arg3:std::int64) -> set of int64 {
+    volatile := true;
+    description := 'myfunc sample';
+    from sql $$SELECT blarg;$$;
+}
+
+---
+
+(source_file
+  (statement
+    (function_statement
+      (keyword_function)
+      (name
+        (identifier))
+      (parameters
+        (parameter
+          (variable
+            (identifier))
+          (type_expression
+            (type_name
+              (builtin_type))))
+        (parameter
+          (variable
+            (identifier))
+          (type_expression
+            (type_name
+              (builtin_type)))
+          (expression
+            (literal
+              (string))))
+        (parameter
+          (keyword_variadic)
+          (variable
+            (identifier))
+          (type_expression
+            (type_name
+              (module_qualified_name
+                (builtin_module)
+                (builtin_type))))))
+      (type_expression
+        (set_of_type
+          (keyword_set)
+          (keyword_of)
+          (type_expression
+            (type_name
+              (builtin_type)))))
+      (block
+        (statement
+          (sdl_assignment
+            (name
+              (identifier))
+            (expression
+              (constant
+                (keyword_true)))))
+        (statement
+          (sdl_assignment
+            (name
+              (identifier))
+            (expression
+              (literal
+                (string)))))
+        (statement
+          (command_statement
+            (command_keyword
+              (keyword_from))
+            (expression
+              (name
+                (identifier)))
+            (expression
+              (literal
+                (dollar_string)))))))))
