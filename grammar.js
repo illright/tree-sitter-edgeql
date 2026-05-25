@@ -22,11 +22,8 @@ export default grammar({
   conflicts: $ => [
     [$.set_literal, $.block],
     [$.set_literal, $.statement],
-    [$.shape_element],
     [$.array_type],
-    [$.module_qualified_name, $.expression],
     [$.path_expression, $.module_qualified_name],
-    [$.module_qualified_name, $.path_segment],
     [$.dotted_module_qualified_name, $.type_name],
     [$.type_name, $.expression],
     [$.create_statement, $.command_keyword],
