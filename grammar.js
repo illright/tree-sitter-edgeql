@@ -27,6 +27,7 @@ export default grammar({
     [$.dotted_module_qualified_name, $.type_name],
     [$.type_name, $.expression],
     [$.create_statement, $.command_keyword],
+    [$.sdl_module_declaration, $.with_module_clause],
   ],
 
   rules: {

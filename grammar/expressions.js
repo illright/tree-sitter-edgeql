@@ -2,6 +2,7 @@ import { PREC, commaSep } from "./helpers.js";
 
 export default {
   expression: $ => choice(
+    $.exists_expression,
     $.conditional_expression,
     $.binary_expression,
     $.unary_expression,
@@ -25,6 +26,12 @@ export default {
     $.builtin_module,
     $.builtin_function,
     $.builtin_constraint,
+  ),
+
+  exists_expression: $ => seq(
+    $.keyword_exists,
+    optional($.keyword_global),
+    $.expression,
   ),
 
   conditional_expression: $ => prec.right(PREC.CONDITIONAL, seq(

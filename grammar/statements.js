@@ -9,6 +9,8 @@ export default {
 
   statement: $ => choice(
     $.import_statement,
+    $.sdl_using_extension,
+    $.sdl_module_declaration,
     $.sdl_assignment,
     $.sdl_scalar_declaration,
     $.sdl_type_declaration,
@@ -122,6 +124,33 @@ export default {
     optional($.sdl_block),
   ),
 
+  sdl_using_extension: $ => seq(
+    $.keyword_using,
+    $.keyword_extension,
+    field("name", choice($.module_qualified_name, $.name, $.builtin_module)),
+  ),
+
+  _sdl_module_statement_list: $ => seq(
+    $.sdl_module_statement,
+    repeat(seq(";", $.sdl_module_statement)),
+    optional(";"),
+  ),
+
+  sdl_module_statement: $ => choice(
+    $.sdl_type_declaration,
+    $.sdl_scalar_declaration,
+    $.sdl_link_declaration,
+    $.sdl_constraint_declaration,
+  ),
+
+  sdl_module_declaration: $ => seq(
+    $.keyword_module,
+    field("name", choice($.name, $.builtin_module)),
+    "{",
+    optional($._sdl_module_statement_list),
+    "}",
+  ),
+
   _sdl_statement_list: $ => seq(
     $.sdl_statement,
     repeat(seq(";", $.sdl_statement)),
@@ -132,10 +161,13 @@ export default {
 
   sdl_statement: $ => choice(
     $.sdl_assignment,
+    $.sdl_annotation,
     $.sdl_pointer,
     $.sdl_constraint,
     $.sdl_property,
     $.sdl_link,
+    $.sdl_access_policy,
+    $.sdl_on_target_delete,
     $.sdl_rewrite,
     $.sdl_trigger,
     $.sdl_index,
@@ -155,13 +187,20 @@ export default {
     field("value", $.expression),
   ),
 
-  sdl_constraint: $ => seq(
+  sdl_annotation: $ => seq(
+    $.keyword_annotation,
+    field("name", choice($.module_qualified_name, $.name)),
+    ":=",
+    field("value", $.expression),
+  ),
+
+  sdl_constraint: $ => prec.right(seq(
     optional($.keyword_delegated),
     $.keyword_constraint,
     field("name", choice($.module_qualified_name, $.builtin_constraint, $.builtin_function, $.name)),
     optional($.arguments),
     optional(seq($.keyword_on, field("subject", $.parenthesized_expression))),
-  ),
+  )),
 
   sdl_property: $ => seq(
     optional(choice($.keyword_required, $.keyword_optional, $.keyword_multi, $.keyword_single)),
@@ -181,6 +220,23 @@ export default {
     choice($.keyword_to, "->"),
     field("type", $.type_expression),
     optional($.sdl_block),
+  ),
+
+  sdl_access_policy: $ => seq(
+    $.keyword_access,
+    $.keyword_policy,
+    field("name", $.name),
+    field("action", choice($.keyword_allow, $.keyword_deny)),
+    field("scope", choice($.keyword_all, $.keyword_select, $.keyword_update, $.keyword_delete, $.keyword_insert)),
+    optional(seq($.keyword_using, field("condition", $.parenthesized_expression))),
+    optional($.sdl_block),
+  ),
+
+  sdl_on_target_delete: $ => seq(
+    $.keyword_on,
+    field("subject", choice($.keyword_target, $.name)),
+    $.keyword_delete,
+    field("action", choice($.keyword_allow, $.keyword_restrict, $.keyword_delete, $.keyword_deferred)),
   ),
 
   sdl_rewrite: $ => seq(

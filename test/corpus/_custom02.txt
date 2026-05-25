@@ -1,0 +1,318 @@
+==================
+_custom02
+==================
+
+using extension auth;
+
+module default {
+  type Card {
+    required order: int64;
+    required front: str {
+      annotation title := "Front side";
+      annotation description := "Will be shown when reviewing the card.";
+    };
+    required back: str {
+      annotation title := "Back side";
+      annotation description := "Will be shown after you try to recall the front side.";
+    };
+    multi tags: card_internal::Tag;
+
+    annotation substance::use_as_title := "front";
+
+    access policy authenticated_user_has_full_access
+      allow all
+      using (exists global ext::auth::ClientTokenIdentity) {
+        errmessage := "Only authenticated users can access this collection.";
+      }
+  };
+
+  type Deck {
+    required name: str;
+    description: str {
+      annotation substance::editor := "rich";
+    };
+    multi cards: Card {
+      constraint exclusive;
+      on target delete allow;
+    };
+
+    access policy authenticated_user_has_full_access
+      allow all
+      using (exists global ext::auth::ClientTokenIdentity) {
+        errmessage := "Only authenticated users can access this collection.";
+      }
+  };
+};
+
+module card_internal {
+  type Tag {
+    required slug: str;
+    required name: str;
+    required order: int32;
+
+    annotation substance::use_as_order := "order";
+  };
+};
+
+---
+
+(source_file
+  (statement
+    (sdl_using_extension
+      (keyword_using)
+      (keyword_extension)
+      (name
+        (identifier))))
+  (statement
+    (sdl_module_declaration
+      (keyword_module)
+      (name
+        (identifier))
+      (sdl_module_statement
+        (sdl_type_declaration
+          (keyword_type)
+          (name
+            (identifier))
+          (sdl_block
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))))
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))
+                (sdl_block
+                  (sdl_statement
+                    (sdl_annotation
+                      (keyword_annotation)
+                      (name
+                        (identifier))
+                      (expression
+                        (literal
+                          (string)))))
+                  (sdl_statement
+                    (sdl_annotation
+                      (keyword_annotation)
+                      (name
+                        (identifier))
+                      (expression
+                        (literal
+                          (string))))))))
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))
+                (sdl_block
+                  (sdl_statement
+                    (sdl_annotation
+                      (keyword_annotation)
+                      (name
+                        (identifier))
+                      (expression
+                        (literal
+                          (string)))))
+                  (sdl_statement
+                    (sdl_annotation
+                      (keyword_annotation)
+                      (name
+                        (identifier))
+                      (expression
+                        (literal
+                          (string))))))))
+            (sdl_statement
+              (sdl_pointer
+                (keyword_multi)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (module_qualified_name
+                      (name
+                        (identifier))
+                      (name
+                        (identifier)))))))
+            (sdl_statement
+              (sdl_annotation
+                (keyword_annotation)
+                (module_qualified_name
+                  (name
+                    (identifier))
+                  (name
+                    (identifier)))
+                (expression
+                  (literal
+                    (string)))))
+            (sdl_statement
+              (sdl_access_policy
+                (keyword_access)
+                (keyword_policy)
+                (name
+                  (identifier))
+                (keyword_allow)
+                (keyword_all)
+                (keyword_using)
+                (parenthesized_expression
+                  (expression
+                    (exists_expression
+                      (keyword_exists)
+                      (keyword_global)
+                      (expression
+                        (path_expression
+                          (type_name
+                            (module_qualified_name
+                              (builtin_module)
+                              (name
+                                (identifier))))
+                          (name
+                            (identifier)))))))
+                (sdl_block
+                  (sdl_statement
+                    (sdl_assignment
+                      (name
+                        (identifier))
+                      (expression
+                        (literal
+                          (string)))))))))))
+      (sdl_module_statement
+        (sdl_type_declaration
+          (keyword_type)
+          (name
+            (identifier))
+          (sdl_block
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))))
+            (sdl_statement
+              (sdl_pointer
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))
+                (sdl_block
+                  (sdl_statement
+                    (sdl_annotation
+                      (keyword_annotation)
+                      (module_qualified_name
+                        (name
+                          (identifier))
+                        (name
+                          (identifier)))
+                      (expression
+                        (literal
+                          (string))))))))
+            (sdl_statement
+              (sdl_pointer
+                (keyword_multi)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (name
+                      (identifier))))
+                (sdl_block
+                  (sdl_statement
+                    (sdl_constraint
+                      (keyword_constraint)
+                      (builtin_constraint)))
+                  (sdl_statement
+                    (sdl_on_target_delete
+                      (keyword_on)
+                      (keyword_target)
+                      (keyword_delete)
+                      (keyword_allow))))))
+            (sdl_statement
+              (sdl_access_policy
+                (keyword_access)
+                (keyword_policy)
+                (name
+                  (identifier))
+                (keyword_allow)
+                (keyword_all)
+                (keyword_using)
+                (parenthesized_expression
+                  (expression
+                    (exists_expression
+                      (keyword_exists)
+                      (keyword_global)
+                      (expression
+                        (path_expression
+                          (type_name
+                            (module_qualified_name
+                              (builtin_module)
+                              (name
+                                (identifier))))
+                          (name
+                            (identifier)))))))
+                (sdl_block
+                  (sdl_statement
+                    (sdl_assignment
+                      (name
+                        (identifier))
+                      (expression
+                        (literal
+                          (string)))))))))))))
+  (statement
+    (sdl_module_declaration
+      (keyword_module)
+      (name
+        (identifier))
+      (sdl_module_statement
+        (sdl_type_declaration
+          (keyword_type)
+          (name
+            (identifier))
+          (sdl_block
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))))
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))))
+            (sdl_statement
+              (sdl_pointer
+                (keyword_required)
+                (name
+                  (identifier))
+                (type_expression
+                  (type_name
+                    (builtin_type)))))
+            (sdl_statement
+              (sdl_annotation
+                (keyword_annotation)
+                (module_qualified_name
+                  (name
+                    (identifier))
+                  (name
+                    (identifier)))
+                (expression
+                  (literal
+                    (string)))))))))))
