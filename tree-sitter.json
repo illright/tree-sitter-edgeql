@@ -12,7 +12,8 @@
         "gel"
       ],
       "injection-regex": "^edgeql$",
-      "class-name": "TreeSitterEdgeql"
+      "class-name": "TreeSitterEdgeql",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {

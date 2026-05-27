@@ -1,0 +1,4 @@
+name = "EdgeQL"
+grammar = "edgeql"
+path_suffixes = ["esdl", "edgeql", "gel"]
+line_comments = ["# "]
